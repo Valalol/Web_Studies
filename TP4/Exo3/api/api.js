@@ -77,7 +77,7 @@ app.get('/genres/:genre_id/artists/', function (req, res) {
                 img = img ? img.textContent : 'https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png';
                 return {
                     'name': x.textContent,
-                    'id': x.textContent.toLowerCase().replace(' ', '_'),
+                    'id': x.textContent,
                     'photo': img,
                     'genreId': genre,
                 };
