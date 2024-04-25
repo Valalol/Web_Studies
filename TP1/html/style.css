@@ -1,0 +1,151 @@
+/* mise en page globale */
+body {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  background-color: #f6f6f6;
+  min-width: 480px;
+}
+
+header, main, footer {
+  width: 980px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-indent: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  background-image: url("images/poly-music.png");
+  background-repeat: no-repeat;
+}
+
+h2 {
+  font-size: 100%;
+  padding: 1em 0;
+  border-bottom: 1px solid #dfdfdf;
+  margin-bottom: 1em;
+}
+
+p {
+  font-size: 80%;
+  text-align: justify;
+  hyphens: auto;
+  line-height: 1.5em;
+}
+
+li {
+  display: inline-block;
+}
+
+/* 'normalisation' des marges et padding pour simplifier le positionnement */
+/* A DE-COMMENTER lorsque vous commencerez à modifier ce fichier CSS */
+*{
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  position: relative;
+}
+
+section {
+  margin-right: 300px;
+}
+
+/* mise en page de l'entête */
+header {
+  position: relative;
+  background-color: black;
+  color: white;
+  height: 70px;
+  padding: 0.3em 0.3em;
+}
+
+header li {
+  display: inline-block;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+}
+
+header form {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#login-ul {
+  position: absolute;
+  right: 0; 
+}
+
+#social-links {
+  display: none;
+}
+
+
+/* mise en page de la section Pop/Rock */
+
+#Pop-rock-artist-highlight, #Pop-rock-song-highlight {
+  border: 1px solid #dfdfdf;
+  background-color: white;
+  padding: 1em 3em;
+  margin-top: 0.5em;
+}
+
+/* mise en page de la section Pop/Rock Artists Highlights */
+
+#Pop-rock-artist-highlight article {
+  display: inline-block;
+}
+
+#Pop-rock-artist-highlight article p {
+  display: none;
+}
+
+#Pop-rock-artist-highlight article img {
+  height: 150px;
+}
+
+/* mise en page de la section Pop/Rock Song Highlights */
+
+
+
+/* mise en page de l'aside Recent Pop/Rock Releases */
+aside {
+  width: 240px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid #dfdfdf;
+  padding: 1em;
+  margin: 0.5em;
+}
+
+aside img {
+  width: 40%;
+}
+
+/* mise en page du footer */
+footer {
+  background-color: black;
+  color: white;
+  padding: 1em 0;
+}
+
+footer li {
+  display: inline-block;
+  text-align: center;
+  padding-right: 15px;
+  border-right: 1px solid white;
+  margin-right: 10px;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+/* règles de mise en page pour rendre le site responsive */
