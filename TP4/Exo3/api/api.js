@@ -54,7 +54,69 @@ app.get('/genres/', function (req, res) {
                         });
                 });
         });
-
-
     console.log('[200] Api access to genres');
 });
+
+
+
+app.get('/genres/:genre_id/artists/', function (req, res) {
+    const genre = decodeURIComponent(req.params.genre_id);
+    fetch(`http://ws.audioscrobbler.com/2.0/?method=tag.gettopartists&tag=${genre}&api_key=2c08f218f45c6f367a0f4d2b350bbffc`)
+        .catch(error => console.log(error))
+        .then((response) => {
+            if (!response.ok) console.error(response);
+            else return response.text();
+        })
+        .then((response) => {
+            let doc = new xmldom().parseFromString(response);
+            let artist_name = xpath.select('//lfm/topartists/artist/name/text()', doc);
+            let artist_img = xpath.select('//lfm/topartists/artist/image[@size="large"]/text()', doc);
+            let output = artist_name.map((x, i) => {
+                let img = artist_img[i];
+                // if no image is provided, puts a default one
+                img = img ? img.textContent : 'https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png';
+                return {
+                    'name': x.textContent,
+                    'id': x.textContent.toLowerCase().replace(' ', '_'),
+                    'photo': img,
+                    'genreId': genre,
+                };
+            });
+            res.json(output);
+        });
+    console.log(`[200] Api access to artist "${genre}"`);
+});
+
+
+
+app.get('/artists/:artist_id/albums', function (req, res) {
+    const artist = decodeURIComponent(req.params.artist_id);
+    fetch(`http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${artist}&api_key=2c08f218f45c6f367a0f4d2b350bbffc`)
+        .catch(error => console.log(error))
+        .then((response) => {
+            if (!response.ok) console.error(response);
+            else return response.text();
+        })
+        .then((response) => {
+            let doc = new xmldom().parseFromString(response);
+            let albums = xpath.select('//album', doc);
+
+            let output = albums.map((album) => {
+                let name = xpath.select1('./name', album).firstChild.data;
+                let image = xpath.select1('./image[@size="large"]', album).firstChild;
+                let playcount = xpath.select1('./playcount', album).firstChild.data;
+                image = image ? image.data : '';
+                return {
+                    'title': name,
+                    'cover': image,
+                    'artistId': artist,
+                    'label': 'label',
+                    'playcount': playcount,
+                    'id': 'hey',
+                };
+            });
+            res.json(output);
+        });
+    console.log(`[200] Api access to albums from "${artist}"`);
+});
+

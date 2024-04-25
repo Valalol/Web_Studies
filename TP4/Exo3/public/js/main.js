@@ -87,8 +87,7 @@ async function artistSelected(event) {
     let img_td;
     let img;
     let title_td;
-    let year_td;
-    let label_td;
+    let playcount_td;
 
     albums.forEach((album) => {
         tr = document.createElement('tr');
@@ -103,13 +102,9 @@ async function artistSelected(event) {
         title_td.textContent = album.title;
         tr.appendChild(title_td);
 
-        year_td = document.createElement('td');
-        year_td.textContent = album.year;
-        tr.appendChild(year_td);
-
-        label_td = document.createElement('td');
-        label_td.textContent = album.label;
-        tr.appendChild(label_td);
+        playcount_td = document.createElement('td');
+        playcount_td.textContent = album.playcount;
+        tr.appendChild(playcount_td);
 
         table_body.appendChild(tr);
     });
@@ -117,7 +112,7 @@ async function artistSelected(event) {
     aside.style.visibility = 'visible';
     aside.style.opacity = 1;
     aside.style.transition = 'visibility 0s, opacity 0.5s';
-    aside.style.top = body.clientHeight / 2 - aside.clientHeight / 2 + 'px';
+    aside.style.top = self.innerHeight / 2 - aside.clientHeight / 2 + 'px';
     aside.style.left = body.clientWidth / 2 - aside.clientWidth / 2 + 'px';
 }
 
