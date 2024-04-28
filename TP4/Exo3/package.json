@@ -7,7 +7,7 @@
     "test": "gulp",
     "start": "nodemon --exec node serveur.js"
   },
-  "author": "",
+  "author": "Valentin ESNAULT",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",

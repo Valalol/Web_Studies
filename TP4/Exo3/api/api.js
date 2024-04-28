@@ -44,7 +44,11 @@ app.get('/genres/', function (req, res) {
                                 let genre_name = xpath.select('//tag/name/text()', doc)[0];
                                 let description = xpath.select('//tag/wiki/summary/text()', doc)[0];
                                 // console.log(`${genre_name} : ${description}\n\n`);
-                                return {'id': genre_name.textContent, 'name': genre_name.textContent, 'description': description.textContent};
+                                return {
+                                    'id': genre_name.textContent,
+                                    'name': genre_name.textContent,
+                                    'description': description.textContent,
+                                };
                             });
                     });
                     Promise.all(promises)
